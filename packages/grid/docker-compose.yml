@@ -1,5 +1,6 @@
 version: "3.8"
 services:
+  
   proxy:
     restart: always
     image: traefik:v2.2
@@ -140,6 +141,7 @@ services:
         - traefik.http.routers.${STACK_NAME?Variable not set}-flower-https.tls=true
         - traefik.http.routers.${STACK_NAME?Variable not set}-flower-https.tls.certresolver=le
         - traefik.http.services.${STACK_NAME?Variable not set}-flower.loadbalancer.server.port=5555
+  
   backend:
     restart: always
     image: "${DOCKER_IMAGE_BACKEND?Variable not set}:${TAG-latest}"
